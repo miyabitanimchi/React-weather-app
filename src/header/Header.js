@@ -2,8 +2,7 @@ import React from "react";
 
 const Header = () => (
   <>
-    {/* <h1>this is header</h1> */}
-    <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-teal p-6 fixed">
       <div className="flex items-center flex-no-shrink text-white mr-6">
         <svg
           className="h-8 w-8 mr-2"
@@ -32,24 +31,25 @@ const Header = () => (
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
-          <a
+          <button
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
-            Docs
-          </a>
-          <a
+            Home
+          </button>
+          <button
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
+            disabled
           >
             Current Weather
-          </a>
-          <a
+          </button>
+          <button
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
           >
             Hourly Weather
-          </a>
+          </button>
         </div>
         <div>
           <a

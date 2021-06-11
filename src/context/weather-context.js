@@ -20,10 +20,14 @@ const WeatherInfoProvider = ({ children }) => {
       }
     };
     fetchAPI();
-  }, []);
+  }, [city]);
+
+  const setAnotherCity = (anotherCity) => {
+    setCity(anotherCity);
+  };
   console.log(weatherInfo);
   return (
-    <WeatherContext.Provider value={{ weatherInfo }}>
+    <WeatherContext.Provider value={{ weatherInfo, setAnotherCity }}>
       {children}
     </WeatherContext.Provider>
   );
