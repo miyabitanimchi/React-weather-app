@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { BiSmile, BiSun } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useWeatherContext } from "../context/weather-context";
@@ -6,14 +6,15 @@ import { useWeatherContext } from "../context/weather-context";
 const Home = () => {
   const { weatherInfo } = useWeatherContext();
   const { setAnotherCity } = useWeatherContext();
+  const [city, setCity] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAnotherCity(e.target.value);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // setAnotherCity(e.target.value);
+  // };
 
-  const handleChange = (e) => {
-    setAnotherCity(e.target.value);
+  const handleChange = (city) => {
+    setAnotherCity(city);
   };
 
   return (
@@ -39,12 +40,12 @@ const Home = () => {
                 <button>Learn More</button>
               </Link>
               <h1 className="flex items-center  mx-auto mb-3 text-xl ">Or</h1>
-              <form className="form" onSubmit={handleSubmit}>
+              <form className="form">
                 <input
                   className="shadow appearance-none border rounded w-3/12 mx-auto py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-6"
                   type="text"
                   placeholder="Search for a city..."
-                  onChange={handleChange}
+                  onChange={(e) => setCity(e.target.value)}
                 />
                 <Link
                   to="current-weather"
@@ -54,7 +55,7 @@ const Home = () => {
                     className="w-full py-2 px-4 bg-yellow-500 hover:bg-yellow-400 rounded"
                     type="submit"
                     value="Go"
-                    // onClick={handleChange}
+                    onClick={() => handleChange(city)}
                   />
                 </Link>
               </form>
