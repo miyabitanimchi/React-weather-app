@@ -25,10 +25,10 @@ const Home = () => {
             <div className="flex h-full flex-col justify-center">
               <div className="flex items-center  mx-auto mb-6 text-xl">
                 <h1 className="text-black-500 flex-initial text-gray-600">
-                  Check Weather First Before You'll Have A Good Day
+                  Check The Weather Before You'll Have A Good Day
                 </h1>
-                <BiSmile className="flex-initial my-auto mx-1 text-gray-600" />
-                <BiSun className="flex-initial my-auto text-yellow-500 " />
+                <BiSmile className="flex-initial my-auto mx-1 text-gray-600 text-2xl" />
+                <BiSun className="flex-initial my-auto text-yellow-500 text-2xl" />
               </div>
               <div className="w-1/3 h-1/4 flex flex-col justify-center mx-auto shadow-lg rounded-2xl bg-gradient-to-tl from-blue-300 via-green-200 to-yellow-300">
                 <h3 className="mx-auto text-gray-600">

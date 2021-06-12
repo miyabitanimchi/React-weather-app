@@ -1,16 +1,29 @@
 import React from "react";
-import { useWeatherContext } from "../context/weather-context";
 
-const Forecast = () => {
-  const { forecastInfo } = useWeatherContext();
+const Forecast = (props) => {
+  const { main, weather, everyThreeHours } = props;
 
   return (
     <>
-      {forecastInfo.length !== 0 ? (
-        <h1>Hello world</h1>
-      ) : (
-        <h1>no info to show</h1>
-      )}
+      <div className="m-10 w-1/6 h-1/3 bg-gradient-to-t from-indigo-200 via-red-200 to-yellow-100 shadow-lg rounded-2xl">
+        <p>In {everyThreeHours} Hours</p>
+        <p>{weather[0].description}</p>
+        <img
+          className="opacity-70"
+          src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          alt="icon"
+        />
+        <p>{Math.round(main.temp)}°C</p>
+        <p>
+          HIGH: {Math.round(main.temp_max)} °C / LOW:
+          {Math.round(main.temp_min)} °C
+        </p>
+        <p>
+          Feels Like: {Math.round(main.feels_like)}
+          °C
+        </p>
+        <p>Humidity: {main.humidity}%</p>
+      </div>
     </>
   );
 };

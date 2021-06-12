@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => (
   <>
@@ -28,25 +29,25 @@ const Header = () => (
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
-          <button
-            href="#responsive-header"
+          <Link
+            to="/"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
             Home
-          </button>
-          <button
-            href="#responsive-header"
+          </Link>
+          <Link
+            to="current-weather"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
             disabled
           >
             Current Weather
-          </button>
-          <button
-            href="#responsive-header"
+          </Link>
+          <Link
+            to="forecast"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
           >
             Hourly Weather
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
