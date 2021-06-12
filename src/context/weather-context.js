@@ -5,16 +5,22 @@ const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const WeatherContext = createContext();
 
 const WeatherInfoProvider = ({ children }) => {
-  const [weatherInfo, setWeatherInfo] = useState([]);
+  const [currentWeatherInfo, setCurrentWeatherInfo] = useState([]);
+  const [forecastInfo, setForecastInfo] = useState([]);
   const [city, setCity] = useState("vancouver");
 
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const response = await axios.get(
+        const currentWeatherResponse = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
         );
-        setWeatherInfo(response.data);
+        const forecastResponse = await axios.get(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
+        );
+        console.log(forecastResponse.data);
+        setCurrentWeatherInfo(currentWeatherResponse.data);
+        setForecastInfo(forecastResponse.data);
       } catch (error) {
         console.error(`Oops, error!: ${error}`);
       }
@@ -25,9 +31,11 @@ const WeatherInfoProvider = ({ children }) => {
   const setAnotherCity = (anotherCity) => {
     setCity(anotherCity);
   };
-  console.log(weatherInfo);
+  console.log(currentWeatherInfo);
   return (
-    <WeatherContext.Provider value={{ weatherInfo, setAnotherCity }}>
+    <WeatherContext.Provider
+      value={{ currentWeatherInfo, forecastInfo, setAnotherCity }}
+    >
       {children}
     </WeatherContext.Provider>
   );

@@ -5,7 +5,7 @@ import Footer from "../footer/Footer";
 const Wrapper = ({ children }) => (
   <>
     <Header />
-    <main className="h-screen">{children}</main>
+    <main className="h-screen bg-gray-100">{children}</main>
     <Footer />
   </>
 );
