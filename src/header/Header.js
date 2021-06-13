@@ -46,7 +46,7 @@ const Header = () => (
             to="forecast"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
           >
-            Hourly Weather
+            3 Hour Forecast
           </Link>
         </div>
       </div>

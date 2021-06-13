@@ -19,17 +19,20 @@ const ForecastList = () => {
   return (
     <>
       {forecastInfo.length !== 0 && (
-        <div className="h-full">
-          <div className="flex h-full justify-center items-center">
-            {newForecastArr.map((forecast, index) => (
-              <Forecast
-                key={forecast.dt}
-                {...forecast}
-                everyThreeHours={`${(index + 1) * 3}`}
-              />
-            ))}
+        <section className="h-full text-gray-600 flex justify-center items-center">
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-lg">3 Hour Forecast</p>
+            <div className="flex h-full justify-center items-center">
+              {newForecastArr.map((forecast, index) => (
+                <Forecast
+                  key={forecast.dt}
+                  {...forecast}
+                  everyThreeHours={`${(index + 1) * 3}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       )}
     </>
   );

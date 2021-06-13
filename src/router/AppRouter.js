@@ -10,11 +10,13 @@ import Footer from "../footer/Footer";
 const AppRouter = () => (
   <BrowserRouter>
     <Wrapper>
+      <Header />
       <Switch>
         <Route path="/" component={Home} exact={true}></Route>
         <Route path="/current-weather" component={CurrentWeather}></Route>
         <Route path="/forecast" component={ForecastList}></Route>
       </Switch>
+      <Footer />
     </Wrapper>
   </BrowserRouter>
 );

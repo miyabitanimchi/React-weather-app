@@ -8,6 +8,8 @@ const WeatherInfoProvider = ({ children }) => {
   const [currentWeatherInfo, setCurrentWeatherInfo] = useState([]);
   const [forecastInfo, setForecastInfo] = useState([]);
   const [city, setCity] = useState("vancouver");
+  const [isErrorOccured, setIsErrorOccured] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -18,13 +20,22 @@ const WeatherInfoProvider = ({ children }) => {
         const forecastResponse = await axios.get(
           `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
         );
-        console.log(forecastResponse.data);
+
+        console.log(forecastResponse);
         setCurrentWeatherInfo(currentWeatherResponse.data);
         setForecastInfo(forecastResponse.data);
       } catch (error) {
-        console.error(`Oops, error!: ${error}`);
+        if (city.length === 0) {
+          setErrorMsg("Input a city name");
+        } else {
+          setErrorMsg("The city name was not found");
+        }
+        setIsErrorOccured(true);
+        console.log(`Oops, error!: ${error}`);
       }
     };
+    // reset error
+    setIsErrorOccured(false);
     fetchAPI();
   }, [city]);
 
@@ -34,14 +45,19 @@ const WeatherInfoProvider = ({ children }) => {
   console.log(currentWeatherInfo);
   return (
     <WeatherContext.Provider
-      value={{ currentWeatherInfo, forecastInfo, setAnotherCity }}
+      value={{
+        currentWeatherInfo,
+        forecastInfo,
+        isErrorOccured,
+        errorMsg,
+        setAnotherCity,
+      }}
     >
       {children}
     </WeatherContext.Provider>
   );
 };
 
-// custom Hook
 const useWeatherContext = () => useContext(WeatherContext);
 
 export { useWeatherContext, WeatherInfoProvider as default };

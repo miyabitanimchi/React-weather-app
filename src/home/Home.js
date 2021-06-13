@@ -31,23 +31,25 @@ const Home = () => {
                 <BiSun className="flex-initial my-auto text-yellow-500 text-2xl" />
               </div>
               <div className="w-1/3 h-1/4 flex flex-col justify-center mx-auto shadow-lg rounded-2xl bg-gradient-to-tl from-blue-300 via-green-200 to-yellow-300">
-                <h3 className="mx-auto text-gray-600">
-                  {currentWeatherInfo.name}
+                <h3 className="mx-auto text-gray-600 text-md">
+                  {currentWeatherInfo.name}, {currentWeatherInfo.sys.country}
                 </h3>
-                <h3 className="mx-auto text-gray-600">
+                <h3 className="mx-auto text-gray-600 text-lg">
                   {currentWeatherInfo.weather[0].description}
                 </h3>
-                <h3 className="mx-auto mb-3 text-gray-600">
+                <h3 className="mx-auto mb-3 text-gray-600 text-lg">
                   {Math.round(currentWeatherInfo.main.temp)}°C
                 </h3>
                 <Link
                   to="current-weather"
-                  className="bg-yellow-500 hover:bg-yellow-400 text-white py-2 border-b-4 border-yellow-600 hover:border-yellow-500 rounded w-1/4 mx-auto text-center mb-6"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-white py-2 border-b-4 border-yellow-600 hover:border-yellow-500 rounded w-48 mx-auto text-center mb-6"
                 >
                   Learn More
                 </Link>
               </div>
-              <h1 className="flex items-center mx-auto m-3 text-l">Or</h1>
+              <h1 className="flex items-center mx-auto m-3 text-lg text-gray-600">
+                Or
+              </h1>
               <div className="mx-auto w-1/3 h-1/4 shadow-lg py-8 px-36 rounded-2xl bg-gradient-to-br from-green-300 to-purple-400">
                 <form className="form w-full mx-auto flex justify-center">
                   <div className="flex flex-col justify-center">
@@ -60,7 +62,7 @@ const Home = () => {
                     {/* Button to search for a anotehr city */}
                     <Link
                       to="current-weather"
-                      className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold border-b-4 border-yellow-600 hover:border-yellow-500 rounded text-center"
+                      className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold border-b-4 border-yellow-600 hover:border-yellow-500 rounded text-center mx-auto w-48"
                     >
                       <input
                         className="py-2 px-4 bg-yellow-500 hover:bg-yellow-400 rounded w-full cursor-pointer"
