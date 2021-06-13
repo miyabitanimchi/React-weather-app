@@ -6,7 +6,7 @@ const Forecast = (props) => {
   return (
     <>
       <div className="flex flex-col justify-center m-6 h-full">
-        <p className="text-center text-lg mb-3">In {everyThreeHours} Hours</p>
+        <p className="text-center text-md mb-3">In {everyThreeHours} Hours</p>
         <div className=" w-64 pt-7 pb-7 bg-gradient-to-t from-indigo-200 via-red-200 to-yellow-100 shadow-lg rounded-2xl text-center">
           <p className="text-lg">{weather[0].description}</p>
           <img

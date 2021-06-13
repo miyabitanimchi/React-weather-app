@@ -6,10 +6,11 @@ const ForecastList = () => {
   const { forecastInfo } = useWeatherContext();
   const [newForecastArr, setNewForecastArr] = useState([]);
 
+  console.log(forecastInfo);
+
   const getNewForecastArr = () => {
     const newArr = forecastInfo.list.slice(0, 4);
     setNewForecastArr(newArr);
-    console.log(newArr);
   };
 
   useEffect(() => {
@@ -21,7 +22,10 @@ const ForecastList = () => {
       {forecastInfo.length !== 0 && (
         <section className="h-full text-gray-600 flex justify-center items-center">
           <div className="flex flex-col justify-center items-center">
-            <p className="text-lg">3 Hour Forecast</p>
+            <p className="text-lg">
+              3 Hour Forecast : {forecastInfo.city.name},{" "}
+              {forecastInfo.city.country}
+            </p>
             <div className="flex h-full justify-center items-center">
               {newForecastArr.map((forecast, index) => (
                 <Forecast

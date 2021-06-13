@@ -11,32 +11,43 @@ const WeatherInfoProvider = ({ children }) => {
   const [isErrorOccured, setIsErrorOccured] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  useEffect(() => {
-    const fetchAPI = async () => {
-      try {
-        const currentWeatherResponse = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
-        );
-        const forecastResponse = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
-        );
+  const fetchAPI = async () => {
+    try {
+      const currentWeatherRes = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+      );
+      const forecastRes = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
+      );
 
-        console.log(forecastResponse);
-        setCurrentWeatherInfo(currentWeatherResponse.data);
-        setForecastInfo(forecastResponse.data);
-      } catch (error) {
-        if (city.length === 0) {
-          setErrorMsg("Input a city name");
-        } else {
-          setErrorMsg("The city name was not found");
-        }
-        setIsErrorOccured(true);
-        console.log(`Oops, error!: ${error}`);
+      setCurrentWeatherInfo(currentWeatherRes.data);
+      setForecastInfo(forecastRes.data);
+    } catch (error) {
+      if (city.length === 0) {
+        setErrorMsg("Input a city name");
+      } else {
+        setErrorMsg("The city name was not found");
       }
-    };
+      setIsErrorOccured(true);
+      console.log(`Oops, error!: ${error}`);
+    }
+  };
+
+  useEffect(() => {
     // reset error
     setIsErrorOccured(false);
     fetchAPI();
+    console.log("this is useEffect 1");
+  }, [city]);
+
+  // Update weather every 2 mins
+  useEffect(() => {
+    const updateEveryTwomins = setInterval(() => {
+      fetchAPI();
+      console.log("fetched again");
+      console.log("this is useEffect 2");
+    }, 120000);
+    return () => clearInterval(updateEveryTwomins);
   }, [city]);
 
   const setAnotherCity = (anotherCity) => {

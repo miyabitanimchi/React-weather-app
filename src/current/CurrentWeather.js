@@ -50,8 +50,10 @@ const CurrentWeather = () => {
                   </Link>
                 </div>
               </div>
-              <p className="mt-3">Have A Nice Day</p>
-              <BiWinkSmile />
+              <div className="mt-3 flex items-center">
+                <p className="flex-initial my-auto">Have A Nice Day</p>
+                <BiWinkSmile className="my-auto ml-1 text-xl flex-initial" />
+              </div>
             </div>
           </div>
         </>
