@@ -26,7 +26,7 @@ const WeatherInfoProvider = ({ children }) => {
       if (city.length === 0) {
         setErrorMsg("Input a city name");
       } else {
-        setErrorMsg("The city name was not found");
+        setErrorMsg(`The city name "${city}" was not found`);
       }
       setIsErrorOccured(true);
       console.log(`Oops, error!: ${error}`);
@@ -46,7 +46,7 @@ const WeatherInfoProvider = ({ children }) => {
       fetchAPI();
       console.log("fetched again");
       console.log("this is useEffect 2");
-    }, 120000);
+    }, 12000);
     return () => clearInterval(updateEveryTwomins);
   }, [city]);
 
