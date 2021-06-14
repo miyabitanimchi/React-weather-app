@@ -1,16 +1,12 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { BiSmile, BiSun } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useWeatherContext } from "../../context/weather-context";
 
 const Home = () => {
   const { currentWeatherInfo, setAnotherCity } = useWeatherContext();
+  // for the value in the input area
   const [city, setCity] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // setAnotherCity(e.target.value);
-  // };
 
   const handleChange = (city) => {
     setAnotherCity(city);

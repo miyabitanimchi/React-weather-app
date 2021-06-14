@@ -37,7 +37,7 @@ const ForecastList = () => {
               ))}
             </div>
             <div className="flex items-center">
-              <p className="flex-initial my-auto text-lg">You'll Be All Good</p>
+              <p className="flex-initial my-auto text-lg">It'll Be All Good</p>
               <FaRegHandPeace className="my-auto ml-1 text-xl flex-initial" />
             </div>
           </div>
